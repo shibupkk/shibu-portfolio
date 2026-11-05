@@ -1,0 +1,59 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="Enterprise Java Modernization | Shibu S"
+  description="An architecture perspective on incremental modernization of enterprise Java applications."
+>
+  <article class="container section prose">
+    <a class="text-link" href={`${base}#portfolio`}>
+      ← Back to selected work
+    </a>
+
+    <p class="eyebrow">Architecture perspective</p>
+    <h1>Modernizing enterprise Java applications</h1>
+
+    <p class="notice">
+      This article describes a general architecture approach,
+      not a disclosed client implementation.
+    </p>
+
+    <h2>Start with the business problem</h2>
+    <p>
+      Establish the reasons for modernization: release delays,
+      operational risk, scaling constraints, or high maintenance effort.
+      Define measurable outcomes before selecting technologies.
+    </p>
+
+    <h2>Understand the existing system</h2>
+    <p>
+      Map business capabilities, integration dependencies, data ownership,
+      and operational constraints. Identify where incremental change
+      is feasible and where additional preparation is required.
+    </p>
+
+    <h2>Modernize incrementally</h2>
+    <p>
+      Prioritize a bounded capability, establish clear interfaces,
+      and validate its behavior before expanding the migration.
+      Retain a rollback strategy during transition.
+    </p>
+
+    <h2>Build operational foundations</h2>
+    <p>
+      Include automated testing, observability, security controls,
+      deployment automation, and ownership responsibilities
+      in the modernization plan.
+    </p>
+
+    <h2>Use AI with verification</h2>
+    <p>
+      Evaluate AI assistance for code explanation, test generation,
+      and repetitive migration work. Keep engineers accountable
+      for correctness, security, and business behavior.
+    </p>
+  </article>
+</BaseLayout>

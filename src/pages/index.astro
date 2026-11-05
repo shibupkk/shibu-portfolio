@@ -1,0 +1,375 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const base = import.meta.env.BASE_URL;
+
+const expertise = [
+  {
+    number: "01",
+    title: "Enterprise Architecture",
+    description:
+      "Technology roadmaps, architecture governance, enterprise integration, and alignment with business priorities."
+  },
+  {
+    number: "02",
+    title: "Application Modernization",
+    description:
+      "Mainframe and Java modernization, API-first platforms, microservices, and cloud transformation."
+  },
+  {
+    number: "03",
+    title: "Data & AI",
+    description:
+      "Databricks lakehouse platforms, data engineering, and AI-enabled enterprise workflows."
+  }
+];
+
+const selectedWork = [
+  {
+    number: "01",
+    category: "Insurance · Mainframe Modernization",
+    title: "AI-assisted mainframe data-pipeline modernization",
+    summary:
+      "Architecture and delivery leadership for modernizing an insurance client’s mainframe data pipelines to AWS and PySpark.",
+    contribution:
+      "Led architecture and delivery, using AI-assisted and agentic workflows to automate migration activities.",
+    focus:
+      "Connecting legacy modernization with cloud data processing and AI-enabled engineering workflows.",
+    technologies: ["AWS", "PySpark", "AI-assisted migration"],
+    context: "Cognizant · Principal Architect / Associate Director"
+  },
+  {
+    number: "02",
+    category: "Insurance · Application Modernization",
+    title: "API-first modernization of a P&C insurance platform",
+    summary:
+      "Modernization of a property and casualty insurance platform into Java microservices on AWS.",
+    contribution:
+      "Led modernization using API-first integration patterns, supporting application scalability and resilience.",
+    focus:
+      "Aligning application architecture and engineering delivery around a cloud-based microservices platform.",
+    technologies: ["Java", "Microservices", "AWS", "API-first architecture"],
+    context: "Cognizant · Principal Architect / Associate Director"
+  },
+  {
+    number: "03",
+    category: "Banking · Data Platform",
+    title: "Credit-card operational data store",
+    summary:
+      "End-to-end architecture for a banking operational data store using Databricks and PySpark.",
+    contribution:
+      "Led architecture and ETL pipeline optimization to reduce data latency and support near-real-time operational visibility.",
+    focus:
+      "Improving the timeliness of operational data through data-platform architecture and pipeline optimization.",
+    technologies: ["Databricks", "PySpark", "ETL pipelines"],
+    context: "IBM · Senior Architect"
+  },
+  {
+    number: "04",
+    category: "Life Sciences · Data Architecture",
+    title: "Governed lakehouse for clinical and commercial data",
+    summary:
+      "Databricks lakehouse architecture integrating clinical, commercial, and market data.",
+    contribution:
+      "Architected platforms using medallion architecture, PySpark, Delta Lake, and Unity Catalog.",
+    focus:
+      "Structuring enterprise data into governed layers to support integration and analytics.",
+    technologies: [
+      "Databricks",
+      "Delta Lake",
+      "Unity Catalog",
+      "PySpark"
+    ],
+    context: "Cognizant · Principal Architect / Associate Director"
+  },
+  {
+    number: "05",
+    category: "Enterprise Integration · Analytics",
+    title: "Connecting IQVIA, Salesforce CRM, and SAP",
+    summary:
+      "Enterprise integration architecture connecting market, customer-engagement, and operational data.",
+    contribution:
+      "Defined integration architectures linking IQVIA, Salesforce CRM, and SAP to support cross-functional analytics and reduce data silos.",
+    focus:
+      "Creating a connected data ecosystem across enterprise applications and external information sources.",
+    technologies: ["IQVIA", "Salesforce CRM", "SAP", "Enterprise integration"],
+    context: "Cognizant · Principal Architect / Associate Director"
+  },
+  {
+    number: "06",
+    category: "Agentic AI · Regulatory Audit",
+    title: "Human-in-the-loop regulatory-audit workflows",
+    summary:
+      "Agentic workflow architecture incorporating human approvals and traceability generation for regulatory-audit use cases.",
+    contribution:
+      "Architected workflows using LangGraph and GPT-4o, incorporating human approval steps and traceability generation.",
+    focus:
+      "Combining AI-assisted workflow execution with human oversight in regulated enterprise contexts.",
+    technologies: ["LangGraph", "GPT-4o", "Human-in-the-loop"],
+    context: "Cognizant · Principal Architect / Associate Director"
+  },
+  {
+    number: "07",
+    category: "Healthcare · Systems Integration",
+    title: "API-led policy and claims integration",
+    summary:
+      "Healthcare integration platforms supporting policy and claims administration.",
+    contribution:
+      "Designed API-led connectivity and integration solutions to improve operational efficiency.",
+    focus:
+      "Connecting systems and administrative processes through enterprise integration.",
+    technologies: ["API-led connectivity", "Enterprise integration"],
+    context: "Optum Global Solutions · Architect"
+  }
+];
+---
+
+<BaseLayout
+  title="Shibu S | Technology Transformation & Enterprise Architecture"
+>
+  <section
+  id="bio"
+  class="container bio-card"
+  aria-labelledby="profile-heading"
+>
+  <div class="bio-card-main">
+    <div class="bio-card-copy">
+      <p class="eyebrow">
+        Enterprise Architecture · Technology Leadership
+      </p>
+
+      <h1 id="profile-heading">Shibu S</h1>
+
+      <p class="bio-card-headline">
+        Connecting technology vision with enterprise delivery.
+      </p>
+
+      <p class="bio-card-description">
+        I help organizations modernize applications, cloud platforms,
+        and data ecosystems. With 23+ years across insurance, banking,
+        healthcare, and life sciences, I bring architectural depth
+        and engineering leadership to complex transformation.
+      </p>
+
+      <a class="button" href="#portfolio">
+        Explore my work
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+    <div class="bio-card-photo">
+      <img
+        src={`${base}profile.jpg`}
+        alt="Portrait of Shibu S"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </div>
+  </div>
+
+  <div class="bio-card-bottom">
+    <div class="bio-card-position">
+      <p>Principal Architect · Associate Director</p>
+      <span>Architecture. Leadership. Transformation.</span>
+    </div>
+
+    <div class="bio-card-links">
+      <a href={`${base}resume.pdf`} download>
+        Download resume
+        <span aria-hidden="true">↓</span>
+      </a>
+
+      <a href="https://www.linkedin.com/in/shibusubhakaran/">
+        LinkedIn
+        <span aria-hidden="true">↗</span>
+      </a>
+
+      <a href="https://github.com/shibupkk">
+        GitHub
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+  <section
+  id="portfolio"
+  class="container content-section"
+  aria-labelledby="portfolio-heading"
+>
+  <div class="section-heading">
+    <p class="eyebrow">Selected work</p>
+
+    <h2 id="portfolio-heading">
+      Architecture & transformation
+    </h2>
+
+    <p class="section-description">
+      Selected initiatives across enterprise modernization,
+      data platforms, integration, and AI-enabled workflows.
+    </p>
+  </div>
+
+  <div class="work-list">
+    {selectedWork.map((project) => (
+      <article class="work-item">
+        <div class="work-number" aria-hidden="true">
+          {project.number}
+        </div>
+
+        <div class="work-content">
+          <p class="eyebrow">{project.category}</p>
+
+          <h3>{project.title}</h3>
+
+          <p class="work-summary">
+            {project.summary}
+          </p>
+
+          <ul class="technology-list" aria-label="Project technologies">
+            {project.technologies.map((technology) => (
+              <li>{technology}</li>
+            ))}
+          </ul>
+
+          <details class="work-details">
+            <summary>Role & contribution</summary>
+
+            <div class="work-details-content">
+              <h4>My contribution</h4>
+              <p>{project.contribution}</p>
+
+              <h4>Focus</h4>
+              <p>{project.focus}</p>
+
+              <p class="work-context">
+                {project.context}
+              </p>
+            </div>
+          </details>
+        </div>
+      </article>
+    ))}
+  </div>
+
+<div
+  class="perspectives-section"
+  aria-labelledby="perspectives-heading"
+>
+  <div class="section-heading">
+    <p class="eyebrow">Architecture perspectives</p>
+
+    <h3 id="perspectives-heading">
+      How I approach enterprise transformation
+    </h3>
+
+    <p class="section-description">
+      Design approaches across application modernization,
+      data integration, and AI-enabled workflows.
+    </p>
+  </div>
+
+  <div class="perspectives-grid">
+    <article class="perspective-note">
+      <p class="eyebrow">01 / Application modernization</p>
+
+      <h3>Modernizing enterprise Java applications</h3>
+
+      <p>
+        An incremental approach to API-first architecture,
+        operational resilience, and delivery risk.
+      </p>
+
+      <a
+        class="text-link"
+        href={`${base}work/modernization/`}
+      >
+        Read the approach
+        <span aria-hidden="true">↗</span>
+      </a>
+    </article>
+
+    <article class="perspective-note">
+      <p class="eyebrow">02 / Data integration & processing</p>
+
+      <h3>Building a governed enterprise lakehouse</h3>
+
+      <p>
+        A design approach for integrating enterprise data
+        using Databricks, Delta Lake, and layered processing.
+      </p>
+
+      <a
+        class="text-link"
+        href={`${base}work/data-integration/`}
+      >
+        Explore the architecture
+        <span aria-hidden="true">↗</span>
+      </a>
+    </article>
+
+    <article class="perspective-note">
+      <p class="eyebrow">03 / Agentic AI</p>
+
+      <h3>Preparing regulatory-audit evidence with AI</h3>
+
+      <p>
+        A proposed workflow combining evidence retrieval,
+        completeness checks, traceability, and human review.
+      </p>
+
+      <a
+        class="text-link"
+        href={`${base}work/agentic-audit/`}
+      >
+        Explore the use case
+        <span aria-hidden="true">↗</span>
+      </a>
+    </article>
+  </div>
+</div>
+</section>
+
+  <section
+    id="expertise"
+    class="container content-section"
+    aria-labelledby="expertise-heading"
+  >
+    <div class="section-heading">
+      <p class="eyebrow">Areas of focus</p>
+      <h2 id="expertise-heading">Where I contribute</h2>
+    </div>
+
+    <div class="expertise-grid">
+      {expertise.map((item) => (
+        <article class="expertise-card">
+          <p class="eyebrow">{item.number}</p>
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section
+    id="contact"
+    class="container content-section"
+    aria-labelledby="contact-heading"
+  >
+    <div class="contact-panel">
+      <div>
+        <p class="eyebrow">Get in touch</p>
+        <h2 id="contact-heading">Let’s connect.</h2>
+
+        <p>
+          For conversations about enterprise architecture,
+          modernization, and technology leadership.
+        </p>
+      </div>
+
+      <a class="button" href="mailto:shibu.sp.pvr@gmail.com">
+        Email me <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

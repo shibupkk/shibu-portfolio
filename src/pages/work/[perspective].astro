@@ -1,0 +1,276 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  const articles = [
+    {
+      slug: "data-integration",
+      category: "Data integration & processing",
+      title: "Building a governed enterprise lakehouse",
+      description:
+        "A proposed approach to enterprise data integration and processing using Databricks and Delta Lake.",
+      introduction:
+        "My proposed approach brings ingestion, transformation, data quality, and governance into a layered architecture. The objective is not simply to move data, but to make it reliable and usable for downstream consumers.",
+      flow: [
+        "Enterprise sources",
+        "Ingestion",
+        "Bronze",
+        "Silver",
+        "Gold",
+        "Analytics / applications"
+      ],
+      sections: [
+        {
+          title: "1. Define the integration requirements",
+          paragraphs: [
+            "Start with the business use cases, source ownership, expected volumes, freshness requirements, and downstream consumers. Agree on what successful integration means before choosing an ingestion pattern."
+          ],
+          bullets: [
+            "Identify sources such as SAP, Salesforce CRM, IQVIA, databases, and files.",
+            "Define acceptable latency and source-system constraints.",
+            "Establish data contracts, reconciliation rules, and ownership.",
+            "Choose batch, incremental, or streaming ingestion based on actual requirements."
+          ]
+        },
+        {
+          title: "2. Preserve source data in the Bronze layer",
+          paragraphs: [
+            "In this design, the Bronze layer retains source-aligned records with ingestion metadata. Keeping an identifiable source representation supports troubleshooting and controlled reprocessing."
+          ],
+          bullets: [
+            "Capture source identifiers and ingestion timestamps.",
+            "Track ingestion runs and source-file or extraction references.",
+            "Define a strategy for schema changes.",
+            "Plan retention and access according to data sensitivity."
+          ]
+        },
+        {
+          title: "3. Standardize and validate in the Silver layer",
+          paragraphs: [
+            "The Silver layer applies agreed business and technical rules using Databricks processing workflows and Delta Lake tables. Each transformation should have an identifiable owner and a testable purpose."
+          ],
+          bullets: [
+            "Standardize data types, timestamps, and reference values.",
+            "Apply deduplication and source-specific update logic.",
+            "Validate required fields and business keys.",
+            "Route invalid records to a controlled exception process.",
+            "Reconcile record counts and relevant financial or business totals."
+          ]
+        },
+        {
+          title: "4. Publish business-ready Gold datasets",
+          paragraphs: [
+            "The Gold layer organizes approved datasets around business consumption. A commercial-analytics use case, for example, could combine approved market, engagement, and operational data into domain-specific outputs."
+          ],
+          bullets: [
+            "Define business measures with domain owners.",
+            "Publish curated tables with documented definitions.",
+            "Separate access needs for analysts, applications, and AI workflows.",
+            "Validate freshness and correctness before releasing outputs."
+          ]
+        },
+        {
+          title: "5. Design governance and operations together",
+          paragraphs: [
+            "The proposed governance approach uses Unity Catalog as the organizing point for catalog access and ownership. Supporting controls should cover the full processing workflow rather than only the final tables."
+          ],
+          bullets: [
+            "Define access boundaries and accountable data owners.",
+            "Maintain traceability between source inputs and published outputs.",
+            "Monitor job failures, data freshness, and quality exceptions.",
+            "Make retries and reprocessing safe through explicit duplicate-handling rules.",
+            "Review compute cost alongside processing and reliability requirements."
+          ]
+        },
+        {
+          title: "6. Measure the outcome",
+          paragraphs: [
+            "I would establish a baseline before implementation and assess the platform against agreed service and business expectations."
+          ],
+          bullets: [
+            "Source-to-consumer latency.",
+            "Data-quality pass rate and reconciliation exceptions.",
+            "Pipeline success rate and recovery time.",
+            "Processing cost per workload.",
+            "Time needed to onboard a new source."
+          ]
+        }
+      ],
+      closing:
+        "The key architectural decision is how to balance freshness, correctness, governance, and operating cost—not simply how to select a data-processing technology."
+    },
+    {
+      slug: "agentic-audit",
+      category: "Agentic AI / proposed use case",
+      title: "Preparing regulatory-audit evidence with AI",
+      description:
+        "A proposed human-reviewed workflow for regulatory-audit evidence preparation using agentic AI.",
+      introduction:
+        "This proposed use case supports audit teams by locating evidence, organizing it against an approved checklist, identifying potential gaps, and drafting a traceable review package. It does not replace an auditor or make a regulatory-compliance determination.",
+      flow: [
+        "Audit scope",
+        "Approved evidence",
+        "Retrieval",
+        "Gap checks",
+        "Draft package",
+        "Human approval"
+      ],
+      sections: [
+        {
+          title: "1. Establish scope and an approved checklist",
+          paragraphs: [
+            "A human audit owner defines the review scope and approves the checklist. For a banking example, the scope could be evidence preparation for a sample of customer due-diligence records."
+          ],
+          bullets: [
+            "Specify the records, period, and approved evidence sources.",
+            "Use a versioned checklist reviewed by the responsible domain specialists.",
+            "Define who may access the evidence and approve the output.",
+            "Explicitly exclude autonomous compliance decisions."
+          ]
+        },
+        {
+          title: "2. Retrieve evidence within access boundaries",
+          paragraphs: [
+            "A retrieval step gathers relevant material from authorized repositories. In this proposed design, approved connectors or MCP tools provide narrowly scoped access; permissions must be enforced by the underlying services."
+          ],
+          bullets: [
+            "Apply the requesting user's access permissions.",
+            "Record document identifiers, versions, and retrieval timestamps.",
+            "Keep source references attached to extracted evidence.",
+            "Avoid granting unrestricted write or delete access."
+          ]
+        },
+        {
+          title: "3. Separate workflow responsibilities",
+          paragraphs: [
+            "I would model the workflow as explicit stages rather than an unrestricted autonomous agent. LangGraph could coordinate the stages, with deterministic checks used where the rules are clear."
+          ],
+          bullets: [
+            "Evidence retrieval: locate authorized source material.",
+            "Checklist mapping: associate evidence with approved review items.",
+            "Completeness checks: identify absent or inconsistent information.",
+            "Drafting: prepare a summary with source references.",
+            "Human review: accept, reject, or request further evidence."
+          ]
+        },
+        {
+          title: "4. Keep outputs grounded and reviewable",
+          paragraphs: [
+            "The proposed output distinguishes source-backed observations, missing evidence, and unresolved questions. A model-generated statement should not be treated as proof simply because it sounds confident."
+          ],
+          bullets: [
+            "Require evidence references for material observations.",
+            "Show missing evidence rather than inventing an answer.",
+            "Treat retrieved documents as data, not trusted instructions.",
+            "Require human approval before issuing or sharing a final package."
+          ]
+        },
+        {
+          title: "5. Maintain an audit trail",
+          paragraphs: [
+            "The workflow design includes a record of evidence retrieval, tool activity, draft generation, and reviewer actions. The retained information should follow the organization's security and retention policies."
+          ],
+          bullets: [
+            "Record workflow and checklist versions.",
+            "Track source references and relevant model configuration.",
+            "Capture reviewer corrections and approval decisions.",
+            "Avoid unnecessarily duplicating sensitive evidence in logs."
+          ]
+        },
+        {
+          title: "6. Evaluate before expanding",
+          paragraphs: [
+            "I would begin with a controlled pilot and human-reviewed examples. Expansion would depend on evidence quality, reviewer feedback, and the effectiveness of the operating controls."
+          ],
+          bullets: [
+            "Accuracy of evidence references.",
+            "Missed gaps and false gap alerts.",
+            "Reviewer correction and rejection rates.",
+            "Evidence-preparation time compared with the baseline.",
+            "Unauthorized-access and adversarial-input test results."
+          ]
+        }
+      ],
+      closing:
+        "The intended value is faster evidence preparation with stronger traceability—not an AI system that independently certifies compliance."
+    }
+  ];
+
+  return articles.map((article) => ({
+    params: { perspective: article.slug },
+    props: { article }
+  }));
+}
+
+const { article } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title={`${article.title} | Shibu S`}
+  description={article.description}
+>
+  <article class="container section prose perspective-article">
+    <a class="text-link" href={`${base}#portfolio`}>
+      <span aria-hidden="true">←</span>
+      Back to selected work
+    </a>
+
+    <header class="article-heading">
+      <p class="eyebrow">{article.category}</p>
+
+      <h1>{article.title}</h1>
+
+      <p class="notice">
+        Architecture perspective: this page presents a proposed
+        design approach, not a disclosed client implementation
+        or a claim of measured results.
+      </p>
+
+      <p class="article-introduction">
+        {article.introduction}
+      </p>
+    </header>
+
+    <section
+      class="architecture-flow"
+      aria-labelledby="flow-heading"
+    >
+      <h2 id="flow-heading">Conceptual flow</h2>
+
+      <ol class="flow-steps">
+        {article.flow.map((step) => (
+          <li>{step}</li>
+        ))}
+      </ol>
+    </section>
+
+    {article.sections.map((section) => (
+      <section class="article-section">
+        <h2>{section.title}</h2>
+
+        {section.paragraphs.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
+
+        <ul class="article-list">
+          {section.bullets.map((bullet) => (
+            <li>{bullet}</li>
+          ))}
+        </ul>
+      </section>
+    ))}
+
+    <aside class="article-takeaway">
+      <p class="eyebrow">My architecture perspective</p>
+      <p>{article.closing}</p>
+    </aside>
+
+    <div class="article-contact">
+      <a class="text-link" href={`${base}#contact`}>
+        Discuss a related opportunity
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </article>
+</BaseLayout>
