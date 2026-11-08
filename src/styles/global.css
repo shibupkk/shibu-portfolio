@@ -10,8 +10,8 @@
   --accent: #087e83;
   --accent-dark: #06696e;
   --hero: #153747;
-  --font-heading: "Manrope", "Segoe UI", sans-serif;
-  --font-body: "Inter", "Segoe UI", sans-serif;
+  --font-heading: "Segoe UI", Arial, sans-serif;
+  --font-body: "Segoe UI", Arial, sans-serif;
 
   font-family: var(--font-body);
   font-synthesis: none;
@@ -186,10 +186,10 @@ h4 {
 
 .bio-card-main {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 34%);
+  grid-template-columns: minmax(0, 1fr) minmax(200px, 240px);
   align-items: stretch;
-  gap: clamp(32px, 5vw, 72px);
-  padding: clamp(32px, 6vw, 72px);
+  gap: clamp(24px, 3vw, 40px);
+  padding: clamp(28px, 4vw, 48px);
 }
 
 .bio-card-copy {
@@ -206,34 +206,35 @@ h4 {
   margin: 0 0 16px;
   color: #ffffff;
   font-family: var(--font-body);
-  font-size: clamp(3.5rem, 6.5vw, 5.25rem);
+  font-size: clamp(2.6rem, 4vw, 3.25rem);
   font-weight: 700;
   letter-spacing: -0.075em;
 }
 
 .bio-card-headline {
-  max-width: 36ch;
+  max-width: none;
   margin-bottom: 18px;
   color: #d9e8eb;
   font-family: var(--font-heading);
-  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
   font-weight: 600;
   line-height: 1.4;
   letter-spacing: -0.025em;
+  white-space: nowrap;
 }
 
 .bio-card-description {
-  max-width: 65ch;
+  max-width: none;
   margin-bottom: 28px;
   color: #c4d5da;
-  font-size: 0.98rem;
-  line-height: 1.8;
+  font-size: 0.84rem;
+  line-height: 1.65;
 }
 
 .bio-card-photo {
   display: flex;
   min-width: 0;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1;
   align-items: center;
   justify-content: center;
   align-self: center;
@@ -874,6 +875,10 @@ h4 {
     padding: 40px;
   }
 
+  .bio-card-headline {
+    white-space: normal;
+  }
+
   .perspectives-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -928,11 +933,17 @@ h4 {
   }
 
   .bio-card-copy h1 {
-    font-size: clamp(2.7rem, 11vw, 4rem);
+    font-size: clamp(2.2rem, 8vw, 2.9rem);
+  }
+
+  .bio-card-headline {
+    font-size: clamp(1.05rem, 4.2vw, 1.2rem);
   }
 
   .bio-card-photo {
-    aspect-ratio: 4 / 3;
+    width: min(100%, 240px);
+    aspect-ratio: 1;
+    justify-self: center;
   }
 
   .bio-card-photo img {
